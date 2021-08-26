@@ -1,4 +1,4 @@
-const { moveLeft, moveRight } = require("../movement");
+const { moveLeft, moveRight, moveUp, moveDown } = require("../movement");
 
 describe("Test the movement functions", () => {
   describe("The move left function", () => {
@@ -19,6 +19,28 @@ describe("Test the movement functions", () => {
     it("should move the robot to the right", () => {
       const currentPosition = { x: 5, y: 5 };
       expect(moveRight(currentPosition)).toEqual({ x: 6, y: 5 });
+    });
+    it("should not cross the boundaries", () => {
+      const currentPosition = { x: 10, y: 0 };
+      expect(moveRight(currentPosition)).toEqual({ x: 10, y: 0 });
+    });
+  });
+
+  describe("The move up function", () => {
+    it("should move the robot up the grid", () => {
+      const currentPosition = { x: 5, y: 5 };
+      expect(moveUp(currentPosition)).toEqual({ x: 5, y: 6 });
+    });
+    it("should not cross the boundaries", () => {
+      const currentPosition = { x: 10, y: 10 };
+      expect(moveRight(currentPosition)).toEqual({ x: 10, y: 10 });
+    });
+  });
+
+  describe("The move down function", () => {
+    it("should move the robot down the grid", () => {
+      const currentPosition = { x: 5, y: 5 };
+      expect(moveDown(currentPosition)).toEqual({ x: 5, y: 4 });
     });
     it("should not cross the boundaries", () => {
       const currentPosition = { x: 10, y: 0 };
